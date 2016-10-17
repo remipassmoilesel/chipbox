@@ -1,0 +1,126 @@
+<!--
+
+Infoskel is a special file served as informative page by NoDogSplash.
+It must be one page, with only access to 'images' folder.
+
+From original file:
+
+     The nodogsplash server may signal an exception by
+     serving this page to the user, with variables title and content
+     intended to indicate the category and detailed message
+     corresponding to the exception.
+
+-->
+
+<html>
+<head>
+  <title>Chipbox info</title>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta charset="utf-8"/>
+
+  <style type="text/css" media="screen">
+    body {
+      background: #111;
+      margin: 0;
+      color: #ddd;
+      font-family: sans-serif;
+    }
+
+    body > h1 {
+      display: block;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 16px;
+      text-align: center;
+      margin: 0;
+    }
+
+    a {
+      color: #7979FF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      margin: auto;
+      margin-bottom: 1.2em;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 16px;
+      text-align: center;
+      color: gray;
+    }
+
+    .footer {
+      margin: auto;
+      margin-bottom: 3em;
+      margin-top: 3em;
+
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 16px;
+      text-align: center;
+      color: gray;
+
+    }
+
+    .mainlink {
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      width: 150px;
+      background: #222;
+
+      box-sizing: border-box;
+      border: solid 2px gray;
+    }
+
+    .mainlink:first-child {
+      border-right: none;
+    }
+
+    .mainlink:hover {
+      background: #444;
+    }
+
+    .splashImage {
+      background: white;
+      width: 300px;
+      margin: auto;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      text-align: center;
+      border: 4px solid rgba(200, 200, 200, 0.8);
+    }
+
+    .linkContainer {
+      display: block;
+      width: 300px;
+      height: 60px;
+      margin: auto;
+      clear: both;
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>Chipbox</h1>
+
+<div>$title: $content</div>
+
+<ul>
+  <li>Version: $version
+  <li>Node ID: $gatewayname
+</ul>
+
+<div class="footer">
+  <p>Source code: <a href="https://github.com/remipassmoilesel/chipbox">
+    https://github.com/remipassmoilesel/chipbox</a></p>
+</div>
+
+</body>
+</html>
