@@ -47,8 +47,8 @@ When the splash page is served, the following variables in the page are replaced
 <html>
 <head>
   <title>Chipbox entry</title>
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta charset="utf-8" />
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta charset="utf-8"/>
 
   <style type="text/css" media="screen">
     body {
@@ -136,6 +136,14 @@ When the splash page is served, the following variables in the page are replaced
 
   </style>
 
+  <script type="text/javascript">
+    var tok = "$tok";
+    var nclients = "$nclients";
+    var maxclients = "$maxclients";
+
+
+  </script>
+
 </head>
 <body>
 
@@ -156,6 +164,8 @@ When the splash page is served, the following variables in the page are replaced
   <p>Source code: <a href="https://github.com/remipassmoilesel/minibox">
     https://github.com/remipassmoilesel/minibox</a></p>
 </div>
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"/>
 
 </body>
 </html>
