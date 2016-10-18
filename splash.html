@@ -169,27 +169,6 @@ When the splash page is served, the following variables in the page are replaced
 
         feedback("Connecting ...");
 
-        // variables with '$' will be replaced by nodogsplash
-        // redir have to be specified even if it is useless
-        $.get('$authaction?tok=$tok&redir=/')
-
-            .done(function(){
-              console.log("Authentication success");
-              console.log(arguments);
-
-              feedback("Connected !");
-
-              setTimeout(function(){
-                window.location.replace(destination);
-              }, 1000);
-            })
-
-            .fail(function(){
-              console.error("Authentication fail");
-              console.error(arguments);
-              feedback("Connection refused. Try again later !");
-            });
-
       });
     });
   </script>
@@ -208,14 +187,12 @@ When the splash page is served, the following variables in the page are replaced
 <div class="connectedClients">$nclients / $maxclients connected clients.</div>
 
 <div class="linkContainer">
-  <a class="mainlink" id="enterLink" href="#">Enter the Chipbox ...</a>
+  <a class="mainlink" id="enterLink" href="$authtarget">Enter the Chipbox ...</a>
 </div>
 
 <div id="feedbackArea">
 
 </div>
-
-
 
 <!--&lt;!&ndash; Debug purposes only &ndash;&gt;-->
 <!--<div>-->
