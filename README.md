@@ -1,4 +1,4 @@
-# Chipbox
+# Chipbox - Alpha stage
 
 ## Presentation
 
