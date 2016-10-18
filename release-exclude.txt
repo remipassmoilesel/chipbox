@@ -4,3 +4,4 @@ chipbox/dist/*
 chipbox/chat/.git*
 chipbox/chat/dist*
 chipbox/upload/.git*
+chipbox/virtualbox
