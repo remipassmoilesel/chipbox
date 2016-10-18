@@ -13,6 +13,13 @@ Enjoy, it's a free software !
 * Chat, thanks to adamoutler/MinimalChatExtreme
 * File sharing, thanks to muchweb/simple-php-upload
 
+## Virtual Box image 
+
+A Virtual Box image is available here: ....
+
+Setup and visit: vbox_ip:2050
+
+
 ## Installation
 
 This system work on OpenWRT Chaos Calmer. Its require a bit of disk memory, maybe you will have to do an 
@@ -131,11 +138,11 @@ Configure nodogsplash:
 
 Set custom splash:
 
-    root@OpenWrt:/www# vim /etc/fstab
-    
-    /www/chipbox /etc/nodogsplash/htdocs        none    bind
-    
-    root@OpenWrt:/www# mount -a
+    root@OpenWrt:/www# mv /etc/nodogsplash/htdocs /etc/nodogsplash/htdocs.bak
+    root@OpenWrt:/www# mkdir -p /etc/nodogsplash/htdocs
+    root@OpenWrt:/www# ln -s /www/chipbox/splash.html /etc/nodogsplash/htdocs/
+    root@OpenWrt:/www# ln -s /www/chipbox/infoskel.html /etc/nodogsplash/htdocs/
+    root@OpenWrt:/www# ln -s /www/chipbox/images /etc/nodogsplash/htdocs/
 
 Check nodogsplash status with: 
 
@@ -146,17 +153,3 @@ Check listening ports with:
     root@OpenWrt:/www# netstat -lntp
     
 After you can visit an http ressource, nodogsplash will redirect you to the splash file.
-
-# Virtual box image 
-
-Available here: 
-
-Setup and visit: vbox_ip:2050
-    
-    
-    
-    
-    
-    
-    
-    
