@@ -69,7 +69,8 @@ a:hover {
   background: white;
   width: 300px;
   margin: auto;
-  margin: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-align: center;
   border: 4px solid rgba(200, 200, 200, 0.8);
 }
