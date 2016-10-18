@@ -10,8 +10,8 @@ Enjoy, it's a free software !
 
 ## Features
 
-* Chat, thanks to adamoutler/MinimalChatExtreme
-* File sharing, thanks to muchweb/simple-php-upload
+* Chat: https://github.com/remipassmoilesel/chipbox-minimalchatextreme
+* File sharing: https://github.com/remipassmoilesel/chipbox-simplephpupload
 
 ## Virtual Box image 
 
@@ -170,3 +170,15 @@ Check listening ports with:
     root@OpenWrt:/# netstat -lntp
     
 After you can visit an http ressource, nodogsplash will redirect you to the splash file.
+
+
+## Screenshots
+
+### Splash screen and index
+![Splash screen](https://github.com/remipassmoilesel/chipbox/raw/master/screenshots/screenshot1.bmp)
+
+### Chat space
+![Chat](https://github.com/remipassmoilesel/chipbox/raw/master/screenshots/screenshot2.bmp)
+
+### File sharing space
+![File sharing](https://github.com/remipassmoilesel/chipbox/raw/master/screenshots/screenshot3.bmp)
