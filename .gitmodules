@@ -1,0 +1,6 @@
+[submodule "upload"]
+	path = upload
+	url = https://github.com/remipassmoilesel/chipbox-simplephpupload
+[submodule "chat"]
+	path = chat
+	url = https://github.com/remipassmoilesel/chipbox-minimalchatextreme
