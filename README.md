@@ -15,10 +15,27 @@ Enjoy, it's a free software !
 
 ## Virtual Box image 
 
-A Virtual Box image is available here: ....
+A Virtual Box image is available here: 
+https://github.com/remipassmoilesel/chipbox/raw/master/virtualbox/Chipbox_OpenWRT.ova
 
-Setup and visit: vbox_ip:2050
+Setup :
 
+    File > Import virtual machine 
+    
+After launch and visit: http://VBOX_IP:2050
+
+SSH credentials:
+
+    Login:      root@VBOX_IP
+    Password:   azerty
+
+Get vbox_ip:
+
+    On virtual machine screen, after launch type 'Enter'
+    root@OpenWrt:/ ifconfig | less
+
+You need to have an host-only network to access to the VM.
+https://www.virtualbox.org/manual/ch06.html#network_hostonly
 
 ## Installation
 
@@ -37,16 +54,16 @@ users and redirect them to Chipbox.
 Turn on the router :)
 Connect to Openwrt and change the default password:
     
-    $ telnet 192.168.56.10
-    root@OpenWrt:/www# passwd
-    root@OpenWrt:/www# exit
+    $ telnet ROUTER_IP
+    root@OpenWrt:/# passwd
+    root@OpenWrt:/# exit
     
-    $ ssh root@192.168.56.10
+    $ ssh root@ROUTER_IP
 
 ### Install prerequisites
 
-    root@OpenWrt:/www# opkg update
-    root@OpenWrt:/www# opkg install unzip ca-certificates wget lighttpd \
+    root@OpenWrt:/# opkg update
+    root@OpenWrt:/# opkg install unzip ca-certificates wget lighttpd \
         php5 php5-cgi lighttpd-mod-cgi php5-mod-openssl nodogsplash \
         php5-mod-session 
         
@@ -54,30 +71,30 @@ Connect to Openwrt and change the default password:
 
 ### Install project
 
-    root@OpenWrt:/www# mkdir -p /www && cd /www
+    root@OpenWrt:/# mkdir -p /www && cd /www
     root@OpenWrt:/www# wget https://github.com/remipassmoilesel/chipbox/raw/master/dist/release.zip
     root@OpenWrt:/www# unzip release.zip
     root@OpenWrt:/www# rm release.zip
 
 Be sure to let the right permissions on directory:
  
-    root@OpenWrt:/www# chown -R http:www-data /www/chipbox
+    root@OpenWrt:/# chown -R http:www-data /www/chipbox
     
 ### Configure softwares
 
 Release port 80:
 
-    root@OpenWrt:/www# vim /etc/config/uhttpd
+    root@OpenWrt:/# vim /etc/config/uhttpd
     
     config uhttpd 'main'
             list listen_http '0.0.0.0:85'
             list listen_http '[::]:85'
     
-    root@OpenWrt:/www# /etc/init.d/uhttpd restart
+    root@OpenWrt:/# /etc/init.d/uhttpd restart
     
 Configure Lighttpd:
 
-    root@OpenWrt:/www# vim /etc/lighttpd/lighttpd.conf
+    root@OpenWrt:/# vim /etc/lighttpd/lighttpd.conf
      
     server.document-root    = "/www/chipbox"
     server.port             = "80"
@@ -87,12 +104,12 @@ Configure Lighttpd:
     dir-listing.encoding        = "utf-8"
     server.dir-listing          = "enable"
 
-    root@OpenWrt:/www# /etc/init.d/lighttpd enable
-    root@OpenWrt:/www# /etc/init.d/lighttpd start
+    root@OpenWrt:/# /etc/init.d/lighttpd enable
+    root@OpenWrt:/# /etc/init.d/lighttpd start
 
 Configure PHP (please adapt memory amounts):
 
-    root@OpenWrt:/www# vim /etc/php.ini
+    root@OpenWrt:/# vim /etc/php.ini
 
     ; Resource Limits
   
@@ -115,18 +132,18 @@ Configure PHP (please adapt memory amounts):
     doc_root = "/www/chipbox"
     cgi.fix_pathinfo=1
     
-    root@OpenWrt:/www# vim /etc/lighttpd/conf.d/30-cgi.conf 
+    root@OpenWrt:/# vim /etc/lighttpd/conf.d/30-cgi.conf 
 
      cgi.assign       = ( ...
                        ".php" => "/usr/bin/php-cgi",
                        ... )
 
     
-    root@OpenWrt:/www# /etc/init.d/lighttpd restart
+    root@OpenWrt:/# /etc/init.d/lighttpd restart
 
 Configure nodogsplash:
 
-    root@OpenWrt:/www# vim /etc/config/nodogsplash
+    root@OpenWrt:/# vim /etc/config/nodogsplash
     
     config instance
         option enabled 1
@@ -134,22 +151,22 @@ Configure nodogsplash:
     # put below the name of your network, eg. wlan0 
     option network 'lan' 
 
-    root@OpenWrt:/www# /etc/init.d/nodogsplashctl restart
+    root@OpenWrt:/# /etc/init.d/nodogsplashctl restart
 
 Set custom splash:
 
-    root@OpenWrt:/www# mv /etc/nodogsplash/htdocs /etc/nodogsplash/htdocs.bak
-    root@OpenWrt:/www# mkdir -p /etc/nodogsplash/htdocs
-    root@OpenWrt:/www# ln -s /www/chipbox/splash.html /etc/nodogsplash/htdocs/
-    root@OpenWrt:/www# ln -s /www/chipbox/infoskel.html /etc/nodogsplash/htdocs/
-    root@OpenWrt:/www# ln -s /www/chipbox/images /etc/nodogsplash/htdocs/
+    root@OpenWrt:/# mv /etc/nodogsplash/htdocs /etc/nodogsplash/htdocs.bak
+    root@OpenWrt:/# mkdir -p /etc/nodogsplash/htdocs
+    root@OpenWrt:/# ln -s /www/chipbox/splash.html /etc/nodogsplash/htdocs/
+    root@OpenWrt:/# ln -s /www/chipbox/infoskel.html /etc/nodogsplash/htdocs/
+    root@OpenWrt:/# ln -s /www/chipbox/images /etc/nodogsplash/htdocs/
 
 Check nodogsplash status with: 
 
-    root@OpenWrt:/www# ndsctl status
+    root@OpenWrt:/# ndsctl status
     
 Check listening ports with:
     
-    root@OpenWrt:/www# netstat -lntp
+    root@OpenWrt:/# netstat -lntp
     
 After you can visit an http ressource, nodogsplash will redirect you to the splash file.
