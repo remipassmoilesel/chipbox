@@ -22,7 +22,7 @@ Setup :
 
     File > Import virtual machine 
     
-After launch and visit: http://VBOX_IP:2050
+After launch and visit: http://VBOX_IP
 
 SSH credentials:
 
