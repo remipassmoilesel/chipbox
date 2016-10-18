@@ -1,4 +1,6 @@
-.git*
-.idea*
-node_modules*
-dist*
+chipbox/.git*
+chipbox/node_modules/*
+chipbox/dist/*
+chipbox/chat/.git*
+chipbox/chat/dist*
+chipbox/upload/.git*
