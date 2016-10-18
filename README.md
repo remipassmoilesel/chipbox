@@ -2,9 +2,13 @@
 
 ## Presentation
 
-Minimal network system inspired by PirateBox project: https://piratebox.cc/
+Minimal network system inspired by PirateBox project: https://piratebox.cc/ This project is a lighter 
+alternative, with few features but with less configuration impact.
 
-This project is a lighter alternative, with only 2 tools but with less configuration impact. 
+
+With Chipbox you can create for example a free wireless network access where people can chat and 
+exchange files.
+
  
 Enjoy, it's a free software !
 
@@ -22,7 +26,7 @@ Setup :
 
     File > Import virtual machine 
     
-After launch and visit: http://VBOX_IP
+After you can launch the image and visit: http://VBOX_IP
 
 SSH credentials:
 
@@ -39,15 +43,13 @@ https://www.virtualbox.org/manual/ch06.html#network_hostonly
 
 ## Installation
 
-This system work on OpenWRT Chaos Calmer. Its require a bit of disk memory, maybe you will have to do an 
-extroot to extend your device.
+Here we will install Chipbox step by step with lighttpd to serve files, and nodogsplash to catch new
+users and redirect them to Chipbox. This assumes that OpenWrt Chaos Calmer is already up and running. 
+It require a bit of disk memory, maybe you will have to do an extroot to extend your device.
+
+https://wiki.openwrt.org/doc/howto/generic.flashing
 
 https://wiki.openwrt.org/doc/howto/extroot
-
-### Purpose
-
-Here we will install Chipbox step by step with lighttpd to serve files, and nodogsplash to catch new
-users and redirect them to Chipbox.
 
 ### Connection
 
@@ -59,6 +61,11 @@ Connect to Openwrt and change the default password:
     root@OpenWrt:/# exit
     
     $ ssh root@ROUTER_IP
+
+### Set up a network
+
+You must first set up a network, wireless or not, which will be controlled by nodogsplash. You can use
+the Luci interface available at http://192.168.1.1
 
 ### Install prerequisites
 
@@ -153,6 +160,8 @@ Configure nodogsplash:
     option gatewayname 'Chipbox'
     option maxclients '50'
     option idletimeout '1200'
+    
+    # put here the IP adress of the router
     option redirecturl http://172.16.100.1
 
     root@OpenWrt:/# /etc/init.d/nodogsplashctl enable
@@ -173,7 +182,7 @@ Check nodogsplash status with:
 Check listening ports with:
     
     root@OpenWrt:/# netstat -lntp
-    
+
 After you can visit an http ressource, nodogsplash will redirect you to the splash file.
 
 
