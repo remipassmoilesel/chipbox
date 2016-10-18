@@ -151,6 +151,7 @@ Configure nodogsplash:
     # put below the name of your network, eg. wlan0 
     option network 'lan' 
 
+    root@OpenWrt:/# /etc/init.d/nodogsplashctl enable
     root@OpenWrt:/# /etc/init.d/nodogsplashctl restart
 
 Set custom splash:
