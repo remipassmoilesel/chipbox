@@ -150,6 +150,10 @@ Configure nodogsplash:
 
     # put below the name of your network, eg. wlan0 
     option network 'lan' 
+    option gatewayname 'Chipbox'
+    option maxclients '50'
+    option idletimeout '1200'
+    option redirecturl http://172.16.100.1
 
     root@OpenWrt:/# /etc/init.d/nodogsplashctl enable
     root@OpenWrt:/# /etc/init.d/nodogsplashctl restart
